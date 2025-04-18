@@ -39,7 +39,7 @@ jobs:
         run: php scripts/build-phar.php
 
       - name: Upload the PHPCS phar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ success() && matrix.php == '8.0' }}
         with:
           name: phpcs-phar
@@ -48,7 +48,7 @@ jobs:
           retention-days: 28
 
       - name: Upload the PHPCBF phar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ success() && matrix.php == '8.0' }}
         with:
           name: phpcbf-phar
@@ -89,7 +89,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup ini config
         id: set_ini
@@ -116,7 +116,7 @@ jobs:
       # @link https://github.com/marketplace/actions/install-composer-dependencies
       - name: Install Composer dependencies - normal
         if: ${{ matrix.php < '8.0' }}
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
@@ -124,7 +124,7 @@ jobs:
       # For PHP 8.0+, we need to install with ignore platform reqs as PHPUnit 7 is still used.
       - name: Install Composer dependencies - with ignore platform
         if: ${{ matrix.php >= '8.0' }}
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           composer-options: --ignore-platform-reqs
           custom-cache-suffix: $(date -u "+%Y-%m")
