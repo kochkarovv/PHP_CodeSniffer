@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<documentation title="Arrow Alignment">
+    <standard>
+    <![CDATA[
+    All arrows in associative arrays should be aligned to the same column.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Keys are aligned with arrows.">
+        <![CDATA[
+$array = [
+    'key1'       => 'value1',
+    'longer_key' => 'value2',
+    'k'          => 'value3',
+];
+        ]]>
+        </code>
+        <code title="Invalid: Keys are not aligned with arrows.">
+        <![CDATA[
+$array = [
+    'key1' => 'value1',
+    'longer_key' => 'value2',
+    'k' => 'value3',
+];
+        ]]>
+        </code>
+    </code_comparison>
+    <code_comparison>
+        <code title="Valid: Nested arrays have properly aligned arrows.">
+        <![CDATA[
+$array = [
+    'nested'     => [
+        'a'        => 'b',
+        'long_key' => 'c',
+    ],
+    'other_key'  => 'value',
+];
+        ]]>
+        </code>
+        <code title="Invalid: Nested arrays have misaligned arrows.">
+        <![CDATA[
+$array = [
+    'nested' => [
+        'a'   => 'b',
+        'long_key' => 'c',
+    ],
+    'other_key' => 'value',
+];
+        ]]>
+        </code>
+    </code_comparison>
+</documentation> 
