@@ -39,7 +39,7 @@ jobs:
         run: php scripts/build-phar.php
 
       - name: Upload the PHPCS phar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ success() && matrix.php == '8.0' }}
         with:
           name: phpcs-phar
@@ -48,7 +48,7 @@ jobs:
           retention-days: 28
 
       - name: Upload the PHPCBF phar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ success() && matrix.php == '8.0' }}
         with:
           name: phpcbf-phar
